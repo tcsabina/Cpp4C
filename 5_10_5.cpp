@@ -9,8 +9,10 @@ public:
     complex(double r) { real = r; imag = 0; }
 
     void assign(double r, double i) { real = r; imag = i; }
-    void print() { std::cout << real << " + " << imag << "i"; }
+//    void print() { std::cout << real << " + " << imag << "i"; }
     operator double() { return(sqrt(real*real + imag*imag)); }
+    void operator ~() { std::cout << real << " + " << imag << "i"; }
+
 };
 
 inline int     greater(int i, int j) { return (i > j ? i : j); }
@@ -26,9 +28,9 @@ int main() {
     c2.assign(i1, i2);
     std::cout << "1) compare " << i1 << " and " << i2 << ". greater is " << greater(i1, i2) << "\n";
     std::cout << "2) compare " << d2 << " and " << i1 << ". greater is " << greater(d2, double(i2)) << "\n";
-    std::cout << "3) compare " << d2 << " and "; c2.print(); std::cout << ". greater is " << greater(d2, double(c2)) << "\n";
+    std::cout << "3) compare " << d2 << " and "; ~c2; std::cout << ". greater is " << greater(d2, double(c2)) << "\n";
     cmax = greater(c1, c2);
-    std::cout << "4) compare "; c1.print(); std::cout << " and "; c2.print(); std::cout << ". greater is "; cmax.print(); std::cout << "\n";
+    std::cout << "4) compare "; ~c1; std::cout << " and "; ~c2; std::cout << ". greater is "; ~cmax; std::cout << "\n";
 
     return 0;
 }
